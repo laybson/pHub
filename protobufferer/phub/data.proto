@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package phub.proto;
+
+
+enum OrderStatus {
+  ORDER_STATUS_INVALID = 0;
+  ORDER_STATUS_ORDERED = 1;
+  ORDER_STATUS_PAID_OUT = 2;
+  ORDER_STATUS_MEMBERSHIP = 3;
+  ORDER_STATUS_MEMBERSHIP_BASIC = 4;
+  ORDER_STATUS_MAMBERSHIP_PREMIUM = 5;
+}
+
+message Order {
+  int64 id = 1;
+  Costumer costumer = 2;
+  Product product = 3;
+  OrderStatus status = 4;
+}
+
+message Costumer {
+  int64 id = 1;
+  string name = 2;
+}
+
+message Admin {
+  int64 id = 1;
+  string name = 2;
+}
+
+message ProductType {
+  int64 id = 1;
+  string name = 2;
+}
+
+message Payment {
+  int64 id = 1;
+  Order order = 2;
+  Date date = 3;
+}
+
+message Product {
+  int64 id = 1;
+  Admin admin = 2;
+  ProductType type = 3;
+  ProductMetadata metadata = 4;
+  string name = 5;
+}
+
+message Annotation {
+  int64 id = 1;
+  repeated Rule rules = 2;
+  Product product = 3;
+  ProductType product_type = 4;
+}
+
+message Rule {
+  int64 id = 1;
+  string name = 2;
+  repeated string order_statuses = 3;
+  repeated Rule rules = 4;
+  Action action = 5;
+}

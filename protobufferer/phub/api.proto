@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package phub.proto;
+
+import "phub/data.proto";
+
+message UpdateOrderRequest {
+    int64 order_id = 1;
+    Order order_info = 2;
+}
+
+message UpdateOrderResponse {
+    Order order_response = 1;
+}
+
+message OrderRequest {
+    Order order_request= 1;
+}
+
+message OrderResponse {
+    Order order_response= 1;
+}
+
+message OrderLog {
+    Order order_request= 1;
+    string message = 2;
+}
+
+// Other api messages
