@@ -1,7 +1,6 @@
-<!-- <a href="functional/phub/ui/public/index.html">AAAAAAAAAAAAAAAAAA<a> -->
 <div id="index"></div>
 <script>
-    fetch("functional/phub/ui/public/index.html")
+    fetch("./functional/phub/ui/public/index.html")
       .then(response => response.text())
       .then(data => {
         document.querySelector("#index").innerHTML = data;
